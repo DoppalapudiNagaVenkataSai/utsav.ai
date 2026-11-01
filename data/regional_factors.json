@@ -1,0 +1,41 @@
+{
+  "_note": "Illustrative defaults, not market data. Per-head thresholds are in minor units of each currency and are rough assumptions for choosing a catering style. Regions are matched by keyword against the free-text location; the first match wins.",
+  "per_head_thresholds": {
+    "INR": { "potluck_below": 50000, "plated_from": 400000 },
+    "USD": { "potluck_below": 1500, "plated_from": 12000 },
+    "EUR": { "potluck_below": 1500, "plated_from": 11000 },
+    "GBP": { "potluck_below": 1200, "plated_from": 10000 }
+  },
+  "regions": [
+    {
+      "name": "Tamil Nadu (northeast monsoon)",
+      "keywords": ["chennai", "tamil nadu", "madurai", "coimbatore", "pondicherry", "puducherry"],
+      "monsoon_months": [10, 11, 12],
+      "cost_multiplier": 1.0
+    },
+    {
+      "name": "India metro (southwest monsoon)",
+      "keywords": ["mumbai", "delhi", "bengaluru", "bangalore", "hyderabad", "pune", "kolkata", "gurgaon", "gurugram", "noida"],
+      "monsoon_months": [6, 7, 8, 9],
+      "cost_multiplier": 1.25
+    },
+    {
+      "name": "India (southwest monsoon)",
+      "keywords": ["india", "kochi", "kerala", "goa", "mangalore", "jaipur", "ahmedabad", "lucknow", "trivandrum", "thiruvananthapuram", "mysore", "mysuru"],
+      "monsoon_months": [6, 7, 8, 9],
+      "cost_multiplier": 1.0
+    },
+    {
+      "name": "Southeast Asia (wet season)",
+      "keywords": ["singapore", "bangkok", "thailand", "malaysia", "kuala lumpur", "vietnam", "philippines", "manila"],
+      "monsoon_months": [6, 7, 8, 9, 10],
+      "cost_multiplier": 1.1
+    },
+    {
+      "name": "Sri Lanka & Bangladesh",
+      "keywords": ["sri lanka", "colombo", "bangladesh", "dhaka"],
+      "monsoon_months": [5, 6, 7, 8, 9],
+      "cost_multiplier": 1.0
+    }
+  ]
+}

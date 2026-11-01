@@ -1,0 +1,36 @@
+{
+  "_note": "Illustrative defaults, not market data. Percent of total budget per category; each event type sums to 100.",
+  "wedding": {
+    "venue": 22,
+    "catering": 30,
+    "decor": 10,
+    "photography": 10,
+    "attire_and_beauty": 8,
+    "entertainment": 5,
+    "invitations_and_stationery": 2,
+    "transport_and_logistics": 3,
+    "gifts_and_favours": 3,
+    "contingency": 7
+  },
+  "birthday": {
+    "venue": 25,
+    "catering": 35,
+    "decor": 12,
+    "cake_and_desserts": 8,
+    "entertainment": 10,
+    "photography": 4,
+    "invitations_and_stationery": 1,
+    "contingency": 5
+  },
+  "community_event": {
+    "venue": 25,
+    "catering": 25,
+    "permits_and_insurance": 8,
+    "marketing_and_outreach": 8,
+    "decor_and_signage": 8,
+    "entertainment": 10,
+    "volunteer_supplies": 6,
+    "logistics_and_cleanup": 5,
+    "contingency": 5
+  }
+}

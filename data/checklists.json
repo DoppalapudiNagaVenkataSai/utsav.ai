@@ -1,0 +1,71 @@
+{
+  "_note": "Illustrative defaults, not market data. Tasks per event type: 'base' applies to every scale; small (<50), medium (50-150) and large (>150) add to it.",
+  "wedding": {
+    "base": [
+      { "key": "venue", "title": "Venue booked and contract signed", "category": "venue", "is_critical": true },
+      { "key": "caterer", "title": "Caterer booked", "category": "catering", "is_critical": true },
+      { "key": "photographer", "title": "Photographer booked", "category": "photography", "is_critical": true },
+      { "key": "officiant", "title": "Officiant / priest confirmed", "category": "planning", "is_critical": true },
+      { "key": "attire", "title": "Attire and beauty artist booked", "category": "attire_and_beauty", "is_critical": false },
+      { "key": "decorator", "title": "Decorator / florist booked", "category": "decor", "is_critical": false },
+      { "key": "invitations", "title": "Invitations designed and sent", "category": "invitations_and_stationery", "is_critical": false }
+    ],
+    "small": [
+      { "key": "host_helpers", "title": "Ask two friends to act as hosts on the day", "category": "planning", "is_critical": false }
+    ],
+    "medium": [
+      { "key": "entertainment", "title": "DJ / band booked", "category": "entertainment", "is_critical": false },
+      { "key": "coordinator", "title": "Day-of coordinator assigned", "category": "planning", "is_critical": false }
+    ],
+    "large": [
+      { "key": "entertainment", "title": "DJ / band booked", "category": "entertainment", "is_critical": false },
+      { "key": "coordinator", "title": "Professional day-of coordinator hired", "category": "planning", "is_critical": true },
+      { "key": "guest_transport", "title": "Guest transport and parking arranged", "category": "transport_and_logistics", "is_critical": false },
+      { "key": "accommodation", "title": "Room block for out-of-town guests", "category": "transport_and_logistics", "is_critical": false }
+    ]
+  },
+  "birthday": {
+    "base": [
+      { "key": "venue", "title": "Venue booked (or home space prepared)", "category": "venue", "is_critical": true },
+      { "key": "food", "title": "Food arranged", "category": "catering", "is_critical": true },
+      { "key": "cake", "title": "Cake ordered", "category": "cake_and_desserts", "is_critical": true },
+      { "key": "invitations", "title": "Invitations sent and RSVPs tracked", "category": "invitations_and_stationery", "is_critical": false },
+      { "key": "decorations", "title": "Decorations bought", "category": "decor", "is_critical": false }
+    ],
+    "small": [
+      { "key": "activities", "title": "Games / activities planned", "category": "entertainment", "is_critical": false }
+    ],
+    "medium": [
+      { "key": "entertainment", "title": "Entertainer or DJ booked", "category": "entertainment", "is_critical": false },
+      { "key": "photographer", "title": "Photographer (or a designated friend) arranged", "category": "photography", "is_critical": false }
+    ],
+    "large": [
+      { "key": "entertainment", "title": "Entertainer or DJ booked", "category": "entertainment", "is_critical": false },
+      { "key": "photographer", "title": "Photographer booked", "category": "photography", "is_critical": false },
+      { "key": "caterer", "title": "Professional caterer booked", "category": "catering", "is_critical": true }
+    ]
+  },
+  "community_event": {
+    "base": [
+      { "key": "venue", "title": "Venue or public space secured", "category": "venue", "is_critical": true },
+      { "key": "permits", "title": "Permits and insurance obtained", "category": "permits_and_insurance", "is_critical": true },
+      { "key": "volunteers", "title": "Volunteers recruited and briefed", "category": "volunteer_supplies", "is_critical": true },
+      { "key": "promotion", "title": "Promotion launched (posters, social, local groups)", "category": "marketing_and_outreach", "is_critical": false },
+      { "key": "first_aid", "title": "First aid kit and a named first-aider", "category": "logistics_and_cleanup", "is_critical": true },
+      { "key": "cleanup", "title": "Cleanup crew and waste plan", "category": "logistics_and_cleanup", "is_critical": false }
+    ],
+    "small": [
+      { "key": "signup_sheet", "title": "Sign-up sheet for food and supplies", "category": "catering", "is_critical": false }
+    ],
+    "medium": [
+      { "key": "food_vendors", "title": "Food vendors or stalls confirmed", "category": "catering", "is_critical": true },
+      { "key": "programme", "title": "Programme and performers confirmed", "category": "entertainment", "is_critical": false }
+    ],
+    "large": [
+      { "key": "food_vendors", "title": "Food vendors or stalls confirmed", "category": "catering", "is_critical": true },
+      { "key": "programme", "title": "Programme and performers confirmed", "category": "entertainment", "is_critical": false },
+      { "key": "crowd_control", "title": "Crowd management and security plan", "category": "logistics_and_cleanup", "is_critical": true },
+      { "key": "toilets", "title": "Portable toilets / washrooms arranged", "category": "logistics_and_cleanup", "is_critical": true }
+    ]
+  }
+}

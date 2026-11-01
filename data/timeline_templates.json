@@ -1,0 +1,43 @@
+{
+  "_note": "Illustrative defaults, not market data. weeks_before_event is the typical lead time when there is plenty of time to plan.",
+  "wedding": [
+    { "key": "set_budget", "title": "Agree total budget and draft guest list", "weeks_before_event": 52, "category": "planning", "is_critical": true },
+    { "key": "book_venue", "title": "Shortlist and book the venue", "weeks_before_event": 44, "category": "venue", "is_critical": true },
+    { "key": "book_caterer", "title": "Taste-test and book the caterer", "weeks_before_event": 36, "category": "catering", "is_critical": true },
+    { "key": "book_photographer", "title": "Book photographer / videographer", "weeks_before_event": 32, "category": "photography", "is_critical": true },
+    { "key": "save_the_date", "title": "Send save-the-dates", "weeks_before_event": 26, "category": "invitations_and_stationery", "is_critical": false },
+    { "key": "book_entertainment", "title": "Book music / entertainment", "weeks_before_event": 24, "category": "entertainment", "is_critical": false },
+    { "key": "order_attire", "title": "Order attire and book beauty artist", "weeks_before_event": 20, "category": "attire_and_beauty", "is_critical": true },
+    { "key": "decor_plan", "title": "Finalise decor plan with decorator", "weeks_before_event": 16, "category": "decor", "is_critical": false },
+    { "key": "send_invitations", "title": "Send invitations", "weeks_before_event": 10, "category": "invitations_and_stationery", "is_critical": true },
+    { "key": "arrange_transport", "title": "Arrange guest transport and stay", "weeks_before_event": 8, "category": "transport_and_logistics", "is_critical": false },
+    { "key": "finalise_menu", "title": "Finalise menu and dietary counts", "weeks_before_event": 4, "category": "catering", "is_critical": true },
+    { "key": "confirm_vendors", "title": "Reconfirm every vendor, timings and payments", "weeks_before_event": 2, "category": "planning", "is_critical": true },
+    { "key": "final_headcount", "title": "Give final headcount to venue and caterer", "weeks_before_event": 1, "category": "catering", "is_critical": true },
+    { "key": "event_day", "title": "Event day: run-sheet and point person", "weeks_before_event": 0, "category": "planning", "is_critical": true }
+  ],
+  "birthday": [
+    { "key": "set_budget", "title": "Set budget and guest list", "weeks_before_event": 10, "category": "planning", "is_critical": true },
+    { "key": "book_venue", "title": "Book the venue (or prepare home space)", "weeks_before_event": 8, "category": "venue", "is_critical": true },
+    { "key": "book_caterer", "title": "Book caterer or plan menu", "weeks_before_event": 6, "category": "catering", "is_critical": true },
+    { "key": "book_entertainment", "title": "Book entertainment / activities", "weeks_before_event": 5, "category": "entertainment", "is_critical": false },
+    { "key": "send_invitations", "title": "Send invitations", "weeks_before_event": 4, "category": "invitations_and_stationery", "is_critical": true },
+    { "key": "order_cake", "title": "Order the cake", "weeks_before_event": 2, "category": "cake_and_desserts", "is_critical": true },
+    { "key": "decor_plan", "title": "Buy or book decorations", "weeks_before_event": 2, "category": "decor", "is_critical": false },
+    { "key": "final_headcount", "title": "Collect RSVPs and confirm headcount", "weeks_before_event": 1, "category": "catering", "is_critical": true },
+    { "key": "event_day", "title": "Event day: setup and point person", "weeks_before_event": 0, "category": "planning", "is_critical": true }
+  ],
+  "community_event": [
+    { "key": "set_budget", "title": "Form organising team, budget and goals", "weeks_before_event": 20, "category": "planning", "is_critical": true },
+    { "key": "book_venue", "title": "Secure the venue or public space", "weeks_before_event": 16, "category": "venue", "is_critical": true },
+    { "key": "apply_permits", "title": "Apply for permits and event insurance", "weeks_before_event": 12, "category": "permits_and_insurance", "is_critical": true },
+    { "key": "recruit_volunteers", "title": "Recruit and brief volunteers", "weeks_before_event": 10, "category": "volunteer_supplies", "is_critical": true },
+    { "key": "book_caterer", "title": "Arrange food (vendors, stalls or potluck sign-up)", "weeks_before_event": 8, "category": "catering", "is_critical": true },
+    { "key": "book_entertainment", "title": "Confirm performers and programme", "weeks_before_event": 8, "category": "entertainment", "is_critical": false },
+    { "key": "launch_promotion", "title": "Launch promotion and outreach", "weeks_before_event": 6, "category": "marketing_and_outreach", "is_critical": true },
+    { "key": "signage", "title": "Order signage and decor", "weeks_before_event": 3, "category": "decor_and_signage", "is_critical": false },
+    { "key": "logistics_plan", "title": "Finalise site plan, first aid and cleanup", "weeks_before_event": 2, "category": "logistics_and_cleanup", "is_critical": true },
+    { "key": "confirm_vendors", "title": "Reconfirm vendors, volunteers and run-sheet", "weeks_before_event": 1, "category": "planning", "is_critical": true },
+    { "key": "event_day", "title": "Event day: volunteer stations and point person", "weeks_before_event": 0, "category": "planning", "is_critical": true }
+  ]
+}

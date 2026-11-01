@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Occasio — event planning assistant</title>
+  <meta name="description" content="Plan a wedding, birthday or community event: budget split, timeline, checklist and ideas.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="./" aria-label="Occasio home">
+        <img src="logo.svg" alt="" width="32" height="32">
+        <span>Occasio</span>
+      </a>
+      <p class="tagline">Plans you can act on, that adapt when things change.</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <p id="ai-notice" class="notice" role="status" hidden></p>
+  </div>
+
+  <main id="main" class="wrap">
+    <section id="intake" aria-labelledby="intake-title" class="card">
+      <h1 id="intake-title">Tell us about your event</h1>
+      <p class="hint">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required. Amounts are in whole currency units.</p>
+
+      <div class="describe">
+        <label for="describe">Describe it in your own words <span class="optional">(optional)</span></label>
+        <textarea id="describe" rows="3" maxlength="2000"
+          aria-describedby="describe-hint"
+          placeholder="e.g. Wedding for 200 people in Kochi in December, about 8 lakh, outdoors, mostly vegetarian"></textarea>
+        <p id="describe-hint" class="hint">We will fill the form below for you to check. Budget and date are only suggestions until you confirm them.</p>
+        <button type="button" id="autofill" class="btn secondary">Autofill the form</button>
+        <p id="autofill-status" class="status-line" role="status" aria-live="polite"></p>
+      </div>
+
+      <form id="profile-form" novalidate>
+        <div class="grid">
+          <div class="field">
+            <label for="event_type">Event type <span aria-hidden="true">*</span></label>
+            <select id="event_type" name="event_type" required>
+              <option value="wedding">Wedding</option>
+              <option value="birthday">Birthday</option>
+              <option value="community_event">Community event</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="event_date">Event date <span aria-hidden="true">*</span></label>
+            <input id="event_date" name="event_date" type="date" required aria-describedby="event_date-msg">
+            <p id="event_date-msg" class="field-msg"></p>
+          </div>
+          <div class="field">
+            <label for="guest_count">Guests <span aria-hidden="true">*</span></label>
+            <input id="guest_count" name="guest_count" type="number" inputmode="numeric" min="1" max="5000" step="1" required aria-describedby="guest_count-msg">
+            <p id="guest_count-msg" class="field-msg"></p>
+          </div>
+          <div class="field budget-field">
+            <label for="budget">Total budget <span aria-hidden="true">*</span></label>
+            <div class="inline">
+              <label for="currency" class="sr-only">Currency</label>
+              <select id="currency" name="currency">
+                <option value="INR">INR ₹</option>
+                <option value="USD">USD $</option>
+                <option value="EUR">EUR €</option>
+                <option value="GBP">GBP £</option>
+              </select>
+              <input id="budget" name="budget" type="number" inputmode="decimal" min="1" step="any" required aria-describedby="budget-msg">
+            </div>
+            <p id="budget-msg" class="field-msg"></p>
+          </div>
+          <div class="field">
+            <label for="location">Location <span aria-hidden="true">*</span></label>
+            <input id="location" name="location" type="text" maxlength="120" required autocomplete="address-level2" aria-describedby="location-msg">
+            <p id="location-msg" class="field-msg"></p>
+          </div>
+          <fieldset class="field">
+            <legend>Setting</legend>
+            <div class="choices">
+              <label><input type="radio" name="setting" value="indoor" checked> Indoor</label>
+              <label><input type="radio" name="setting" value="outdoor"> Outdoor</label>
+              <label><input type="radio" name="setting" value="mixed"> Mixed</label>
+            </div>
+          </fieldset>
+          <div class="field wide">
+            <label for="vibe">Vibe <span class="optional">(optional)</span></label>
+            <input id="vibe" name="vibe" type="text" maxlength="200" placeholder="e.g. relaxed, colourful, traditional">
+          </div>
+          <div class="field wide">
+            <label for="preferences">Preferences <span class="optional">(optional, comma separated)</span></label>
+            <input id="preferences" name="preferences" type="text" maxlength="800" placeholder="e.g. live music, local food">
+          </div>
+          <div class="field wide">
+            <label for="must_haves">Must-haves <span class="optional">(optional, comma separated)</span></label>
+            <input id="must_haves" name="must_haves" type="text" maxlength="800" placeholder="e.g. sunset photos">
+          </div>
+          <fieldset class="field wide">
+            <legend>Dietary needs</legend>
+            <div class="choices" id="dietary">
+              <label><input type="checkbox" name="dietary" value="vegetarian"> Vegetarian</label>
+              <label><input type="checkbox" name="dietary" value="vegan"> Vegan</label>
+              <label><input type="checkbox" name="dietary" value="jain"> Jain</label>
+              <label><input type="checkbox" name="dietary" value="halal"> Halal</label>
+              <label><input type="checkbox" name="dietary" value="kosher"> Kosher</label>
+              <label><input type="checkbox" name="dietary" value="gluten_free"> Gluten-free</label>
+              <label><input type="checkbox" name="dietary" value="dairy_free"> Dairy-free</label>
+              <label><input type="checkbox" name="dietary" value="nut_allergy"> Nut allergy</label>
+            </div>
+          </fieldset>
+          <div class="field wide">
+            <label class="check"><input type="checkbox" id="has_ticket_revenue" name="has_ticket_revenue"> The event sells tickets</label>
+          </div>
+        </div>
+        <p id="form-error" class="error" role="alert"></p>
+        <button type="submit" class="btn primary" id="submit-btn">Build my plan</button>
+      </form>
+    </section>
+
+    <section id="plan" aria-labelledby="plan-title" hidden>
+      <div class="plan-head card">
+        <h2 id="plan-title" tabindex="-1">Your plan</h2>
+        <p id="plan-summary"></p>
+        <div class="actions" role="group" aria-label="Plan actions">
+          <button type="button" class="btn secondary" id="open-replan">Change constraints</button>
+          <button type="button" class="btn secondary" id="explain-btn">Explain this plan</button>
+          <a class="btn secondary" id="export-md" download>Download Markdown</a>
+          <a class="btn secondary" id="export-json" download>Download JSON</a>
+          <button type="button" class="btn ghost" id="new-plan">Start a new plan</button>
+        </div>
+      </div>
+
+      <div id="plan-status" class="sr-only" role="status" aria-live="polite"></div>
+
+      <section id="diff" class="card" aria-labelledby="diff-title" hidden>
+        <h3 id="diff-title" tabindex="-1">What changed</h3>
+        <ul id="diff-list" class="diff-list"></ul>
+      </section>
+
+      <section id="explanation" class="card" aria-labelledby="explanation-title" hidden>
+        <h3 id="explanation-title">Why the plan looks like this</h3>
+        <div id="explanation-body" aria-live="polite"></div>
+      </section>
+
+      <section id="risks" class="card" aria-labelledby="risks-title">
+        <h3 id="risks-title">Risks and heads-ups</h3>
+        <ul id="risk-list" class="risk-list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="budget-title">
+        <h3 id="budget-title">Budget breakdown</h3>
+        <p id="catering-note" class="hint"></p>
+        <div class="table-wrap">
+          <table id="budget-table">
+            <caption class="sr-only">Budget allocation by category, largest first</caption>
+            <thead>
+              <tr><th scope="col">Category</th><th scope="col" class="num">Amount</th><th scope="col" class="num">Share</th><th scope="col"><span class="sr-only">Share bar and reason</span></th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="timeline-title">
+        <h3 id="timeline-title">Timeline</h3>
+        <p id="timeline-note" class="hint"></p>
+        <div id="timeline"></div>
+      </section>
+
+      <section class="card" aria-labelledby="checklist-title">
+        <h3 id="checklist-title">Checklist</h3>
+        <p class="hint">Tick items as you book them. Progress is saved.</p>
+        <p id="checklist-progress" class="status-line"></p>
+        <ul id="checklist" class="checklist"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="ideas-title">
+        <h3 id="ideas-title">Ideas</h3>
+        <button type="button" class="btn secondary" id="ideas-btn">Suggest ideas</button>
+        <div id="ideas" aria-live="polite"></div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="replan-dialog" aria-labelledby="replan-title">
+    <form id="replan-form" method="dialog" novalidate>
+      <h2 id="replan-title">Change constraints</h2>
+      <p class="hint">Edit anything that changed. We will recompute the plan and show what moved.</p>
+      <div class="grid">
+        <div class="field">
+          <label for="r-event_date">Event date</label>
+          <input id="r-event_date" name="event_date" type="date">
+        </div>
+        <div class="field">
+          <label for="r-guest_count">Guests</label>
+          <input id="r-guest_count" name="guest_count" type="number" min="1" max="5000" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="r-budget">Total budget</label>
+          <input id="r-budget" name="budget" type="number" min="1" step="any" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="r-location">Location</label>
+          <input id="r-location" name="location" type="text" maxlength="120">
+        </div>
+        <div class="field">
+          <label for="r-setting">Setting</label>
+          <select id="r-setting" name="setting">
+            <option value="indoor">Indoor</option>
+            <option value="outdoor">Outdoor</option>
+            <option value="mixed">Mixed</option>
+          </select>
+        </div>
+      </div>
+      <p id="replan-error" class="error" role="alert"></p>
+      <div class="actions">
+        <button type="submit" class="btn primary" value="apply">Re-plan</button>
+        <button type="button" class="btn ghost" id="replan-cancel">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="site-footer wrap">
+    <p>Amounts are illustrative defaults, not quotes. Occasio runs fully without an AI key.</p>
+  </footer>
+</body>
+</html>
