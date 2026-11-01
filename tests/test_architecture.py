@@ -5,11 +5,11 @@ from __future__ import annotations
 import ast
 from pathlib import Path
 
-CORE = Path(__file__).resolve().parents[1] / "src" / "occasio" / "core"
+CORE = Path(__file__).resolve().parents[1] / "src" / "utsav" / "core"
 FORBIDDEN = (
-    "occasio.ai",
-    "occasio.api",
-    "occasio.storage",
+    "utsav.ai",
+    "utsav.api",
+    "utsav.storage",
     "google",
     "fastapi",
     "httpx",

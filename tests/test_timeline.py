@@ -4,8 +4,8 @@ from datetime import timedelta
 
 import pytest
 
-from occasio.core.models import LeadTimeClass
-from occasio.core.timeline import build_timeline, lead_time_class
+from utsav.core.models import LeadTimeClass
+from utsav.core.timeline import build_timeline, lead_time_class
 
 
 @pytest.mark.parametrize(

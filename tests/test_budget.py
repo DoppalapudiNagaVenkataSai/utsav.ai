@@ -5,8 +5,8 @@ from datetime import date
 import pytest
 from pydantic import ValidationError
 
-from occasio.core.budget import AV_SHARE, MONSOON_CONTINGENCY, allocate
-from occasio.core.models import CateringStyle, Currency, format_money
+from utsav.core.budget import AV_SHARE, MONSOON_CONTINGENCY, allocate
+from utsav.core.models import CateringStyle, Currency, format_money
 
 
 def shares(plan) -> dict[str, float]:

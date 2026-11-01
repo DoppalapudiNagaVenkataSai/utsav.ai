@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "occasio"
+name = "utsav-ai"
 version = "0.1.0"
-description = "GenAI event planning assistant: deterministic planning engine + Google Gemini-powered ideas and explanations"
+description = "utsav.ai: GenAI event planning assistant: deterministic planning engine + Google Gemini-powered ideas and explanations"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.11"
@@ -31,7 +31,7 @@ dev = [
 where = ["src"]
 
 [tool.setuptools.package-data]
-occasio = ["web/*"]
+utsav = ["web/*"]
 
 [tool.ruff]
 line-length = 100
@@ -52,12 +52,12 @@ addopts = "-ra"
 [tool.mypy]
 python_version = "3.11"
 mypy_path = "src"
-packages = ["occasio"]
+packages = ["utsav"]
 plugins = ["pydantic.mypy"]
 warn_unused_ignores = true
 
 [[tool.mypy.overrides]]
-module = "occasio.core.*"
+module = "utsav.core.*"
 strict = true
 
 [tool.vercel]

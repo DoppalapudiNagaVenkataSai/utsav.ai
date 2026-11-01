@@ -6,10 +6,10 @@ from pathlib import Path
 
 import pytest
 
-from occasio.ai import explain, ideas, intake
-from occasio.api.app import CSP
+from utsav.ai import explain, ideas, intake
+from utsav.api.app import CSP
 
-WEB = Path(__file__).resolve().parents[1] / "src" / "occasio" / "web"
+WEB = Path(__file__).resolve().parents[1] / "src" / "utsav" / "web"
 
 PAYLOADS = [
     "<script>alert(1)</script>",
@@ -122,7 +122,7 @@ def test_main_csp_disallows_inline_script():
 
 
 def test_rate_limiter_window_and_bounded_memory(monkeypatch):
-    from occasio.api import limits
+    from utsav.api import limits
 
     limiter = limits.RateLimiter(limit=2, window_seconds=10)
     assert limiter.allow("a", now=0) and limiter.allow("a", now=1)

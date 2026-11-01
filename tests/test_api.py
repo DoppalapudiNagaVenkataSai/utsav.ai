@@ -4,7 +4,7 @@ from datetime import date, timedelta
 
 import pytest
 
-from occasio.api.app import AI_RATE_LIMIT, MAX_BODY_BYTES
+from utsav.api.app import AI_RATE_LIMIT, MAX_BODY_BYTES
 
 UNKNOWN = "0" * 32
 
@@ -184,7 +184,7 @@ def test_no_cors_for_other_origins(client):
 
 
 def test_errors_do_not_leak_stack_traces(make_client, monkeypatch, profile_json):
-    from occasio.api import routes_plan
+    from utsav.api import routes_plan
 
     def boom(*args, **kwargs):
         raise RuntimeError("secret internal detail")
@@ -201,7 +201,7 @@ def test_errors_do_not_leak_stack_traces(make_client, monkeypatch, profile_json)
 def test_static_ui_served(client):
     response = client.get("/")
     assert response.status_code == 200
-    assert "Occasio" in response.text
+    assert "utsav.ai" in response.text
 
 
 def test_openapi_docs_available(client):

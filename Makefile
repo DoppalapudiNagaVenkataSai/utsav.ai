@@ -9,7 +9,7 @@ install:
 	$(PY) -m pip install -e ".[dev]"
 
 run:
-	$(PY) -m uvicorn occasio.api.app:create_app --factory --host 127.0.0.1 --port 8000
+	$(PY) -m uvicorn utsav.api.app:create_app --factory --host 127.0.0.1 --port 8000
 
 test:
 	$(PY) -m pytest -q
@@ -23,7 +23,7 @@ format:
 	$(PY) -m ruff check --fix .
 
 typecheck:
-	$(PY) -m mypy src/occasio
+	$(PY) -m mypy src/utsav
 
 size:
 	@echo "Working tree (incl. ignored caches/venv):"; du -sh --exclude=.git .
@@ -31,7 +31,7 @@ size:
 	git count-objects -vH
 
 demo:
-	$(PY) -m occasio.demo
+	$(PY) -m utsav.demo
 
 cov:
-	$(PY) -m pytest -q --cov=occasio --cov-report=term-missing
+	$(PY) -m pytest -q --cov=utsav --cov-report=term-missing

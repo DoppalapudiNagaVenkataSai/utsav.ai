@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from datetime import date
 
-from occasio.core.models import Severity
-from occasio.core.planner import build_plan
+from utsav.core.models import Severity
+from utsav.core.planner import build_plan
 
 
 def codes(plan) -> list[str]:

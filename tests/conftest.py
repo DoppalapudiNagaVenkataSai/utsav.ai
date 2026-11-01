@@ -6,8 +6,8 @@ from typing import Any
 
 import pytest
 
-from occasio.core.knowledge import Knowledge, load_knowledge
-from occasio.core.models import EventProfile
+from utsav.core.knowledge import Knowledge, load_knowledge
+from utsav.core.models import EventProfile
 
 TODAY = date(2026, 1, 5)  # a Monday; fixed so every date-based rule is reproducible
 
@@ -51,8 +51,8 @@ import json  # noqa: E402
 import socket  # noqa: E402
 from types import SimpleNamespace  # noqa: E402
 
-from occasio.ai.client import AIClient  # noqa: E402
-from occasio.core.planner import build_plan  # noqa: E402
+from utsav.ai.client import AIClient  # noqa: E402
+from utsav.core.planner import build_plan  # noqa: E402
 
 
 @pytest.fixture(autouse=True)
@@ -129,10 +129,10 @@ from pathlib import Path  # noqa: E402
 
 from fastapi.testclient import TestClient  # noqa: E402
 
-from occasio.api.app import create_app  # noqa: E402
-from occasio.config import Settings  # noqa: E402
-from occasio.core.knowledge import DEFAULT_DATA_DIR  # noqa: E402
-from occasio.storage.repo import PlanRepository  # noqa: E402
+from utsav.api.app import create_app  # noqa: E402
+from utsav.config import Settings  # noqa: E402
+from utsav.core.knowledge import DEFAULT_DATA_DIR  # noqa: E402
+from utsav.storage.repo import PlanRepository  # noqa: E402
 
 
 def _settings(tmp_path: Path) -> Settings:

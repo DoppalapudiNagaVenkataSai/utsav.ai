@@ -4,9 +4,9 @@ from datetime import date
 
 import pytest
 
-from occasio.core.checklist import build_checklist
-from occasio.core.models import Scale, scale_for
-from occasio.core.timeline import build_timeline
+from utsav.core.checklist import build_checklist
+from utsav.core.models import Scale, scale_for
+from utsav.core.timeline import build_timeline
 
 
 def checklist_for(profile, knowledge, today):

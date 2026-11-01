@@ -1,13 +1,13 @@
-# Occasio — GenAI event planning assistant
+# utsav.ai — GenAI event planning assistant
 
-Occasio turns a few facts about an event (type, date, guests, budget, place, preferences)
+utsav.ai turns a few facts about an event (type, date, guests, budget, place, preferences)
 into a plan you can act on: a budget split, a milestone timeline worked back from the date,
 a vendor checklist, risk flags and personalised ideas. When something changes ("the budget
 dropped 20%", "the guest list grew to 180") it re-plans and shows exactly what moved.
 A **deterministic rules engine** makes every decision about money, dates and tasks; **Google Gemini**
 only handles language. It runs fully without an API key.
 
-![Occasio plan view: summary, risk callouts and budget breakdown](docs/screenshot.png)
+![utsav.ai plan view: summary, risk callouts and budget breakdown](docs/screenshot.png)
 
 ---
 
@@ -27,8 +27,8 @@ forgetting. She wants a plan she can act on, and she wants it to adapt when thin
 
 | Layer | Responsibility | Why |
 |---|---|---|
-| **Deterministic engine** (`src/occasio/core/`, pure Python, no LLM, no network) | Budget allocation, timeline built back from the date, checklist by event type and scale, feasibility and risk checks, re-planning with a diff | Repeatable, testable, auditable, free and offline. All of the *decision making* happens here. |
-| **GenAI layer** (`src/occasio/ai/`, Google Gemini with JSON-schema structured output) | Free text → form fields, personalised theme/menu/decor ideas, plain-language explanation of the engine's decisions | Plays to what LLMs are good at: language, creativity, mapping messy input to structure. |
+| **Deterministic engine** (`src/utsav/core/`, pure Python, no LLM, no network) | Budget allocation, timeline built back from the date, checklist by event type and scale, feasibility and risk checks, re-planning with a diff | Repeatable, testable, auditable, free and offline. All of the *decision making* happens here. |
+| **GenAI layer** (`src/utsav/ai/`, Google Gemini with JSON-schema structured output) | Free text → form fields, personalised theme/menu/decor ideas, plain-language explanation of the engine's decisions | Plays to what LLMs are good at: language, creativity, mapping messy input to structure. |
 
 The LLM **never decides the numbers.** Every budget line, milestone, task and risk has a
 `reason` string. The UI shows these reasons ("Why this amount?"), and they are also the only
@@ -81,7 +81,7 @@ flowchart LR
 5. **Export.** Markdown or JSON download.
 
 **Fallback behaviour.** The AI client returns `None` when there is no key,
-`OCCASIO_AI_ENABLED=false`, a timeout, an API error, a refusal, truncation, non-JSON output,
+`UTSAV_AI_ENABLED=false`, a timeout, an API error, a refusal, truncation, non-JSON output,
 or a schema violation. Each feature then uses `ai/fallback.py`, which builds template ideas
 and explanations from the engine's `reason` fields. Responses carry `"source": "ai"` or
 `"source": "fallback"`, and the UI shows "AI features unavailable — showing standard
@@ -124,10 +124,10 @@ and template fallbacks.
 | Variable | Default | Meaning |
 |---|---|---|
 | `GEMINI_API_KEY` | empty | Enables the AI layer when set |
-| `OCCASIO_MODEL` | `gemini-3.1-flash-lite` | Fast, lightweight model by default; any current model id works |
-| `OCCASIO_AI_ENABLED` | `true` | Set `false` to force fallback mode even with a key |
-| `OCCASIO_DB_PATH` | `occasio.db` | SQLite file (git-ignored) |
-| `OCCASIO_DATA_DIR` | `./data` | Planning data tables |
+| `UTSAV_MODEL` | `gemini-3.1-flash-lite` | Fast, lightweight model by default; any current model id works |
+| `UTSAV_AI_ENABLED` | `true` | Set `false` to force fallback mode even with a key |
+| `UTSAV_DB_PATH` | `utsav.db` | SQLite file (git-ignored) |
+| `UTSAV_DATA_DIR` | `./data` | Planning data tables |
 
 ## 5. Assumptions
 
@@ -236,8 +236,8 @@ Recorded on 2026-10-21 (Linux, Python 3.12.3):
 | Size | `make size` | tracked files **≈ 272 KB** (screenshot is 33 KB); well under the 2 MB target |
 | No secrets in history | `git log --all -p \| grep -iE "sk-ant\|api_key="` | only empty placeholders, variable names and the test value `test-key`; no real key |
 | Lint | `ruff check .` and `ruff format --check .` | `All checks passed!` / `43 files already formatted` |
-| Types | `mypy src/occasio` (strict on `core/`) | `Success: no issues found in 30 source files` |
-| Tests | `pytest -q --cov=occasio` | **170 passed**; coverage 99% `core/`, 97% overall |
+| Types | `mypy src/utsav` (strict on `core/`) | `Success: no issues found in 30 source files` |
+| Tests | `pytest -q --cov=utsav` | **170 passed**; coverage 99% `core/`, 97% overall |
 | Fresh clone | `git clone … && make install && make test && make run` in a clean venv | install OK, 170 passed, server up on :8000 |
 | No API key | `env -u GEMINI_API_KEY make run` | `/healthz` → `ai_enabled: false`; plan, ideas (`source: fallback`), explanation and export all work |
 | Accessibility | axe-core 4.14 + keyboard-only script | 0 violations on 5 screens; full flow by keyboard |

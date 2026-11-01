@@ -19,7 +19,7 @@
     }
   ],
   "env": {
-    "OCCASIO_DB_PATH": "/tmp/occasio.db"
+    "UTSAV_DB_PATH": "/tmp/utsav.db"
   }
 }
 

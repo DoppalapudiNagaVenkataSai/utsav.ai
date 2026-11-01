@@ -1,6 +1,6 @@
-# Occasio architecture
+# utsav.ai architecture
 
-Occasio is a **hybrid** planner. A deterministic, pure-Python engine makes every
+utsav.ai is a **hybrid** planner. A deterministic, pure-Python engine makes every
 decision about money, dates and tasks. An optional Google Gemini layer only handles
 language: parsing free text, suggesting ideas and explaining the engine's
 decisions. If the AI layer is off or fails, templates built from the engine's

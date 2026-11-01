@@ -5,9 +5,9 @@ from datetime import timedelta
 import pytest
 from pydantic import ValidationError
 
-from occasio.core.models import ChangeKind, TaskStatus
-from occasio.core.planner import build_plan
-from occasio.core.replan import apply_changes, diff, replan
+from utsav.core.models import ChangeKind, TaskStatus
+from utsav.core.planner import build_plan
+from utsav.core.replan import apply_changes, diff, replan
 
 
 @pytest.fixture

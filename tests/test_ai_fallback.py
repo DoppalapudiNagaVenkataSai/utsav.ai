@@ -6,9 +6,9 @@ from types import SimpleNamespace
 import pytest
 from google.genai import errors
 
-from occasio.ai import explain, ideas, intake, prompts
-from occasio.ai.client import MAX_TOKENS, AIClient
-from occasio.config import load_settings
+from utsav.ai import explain, ideas, intake, prompts
+from utsav.ai.client import MAX_TOKENS, AIClient
+from utsav.config import load_settings
 
 VALID_IDEAS = {
     "ideas": [
@@ -29,7 +29,7 @@ def test_client_disabled_without_key(disabled_ai):
 
 def test_ai_enabled_flag_false_disables_even_with_key(monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "test-key-123")
-    monkeypatch.setenv("OCCASIO_AI_ENABLED", "false")
+    monkeypatch.setenv("UTSAV_AI_ENABLED", "false")
     settings = load_settings()
     assert not settings.ai_available
     assert not AIClient.from_settings(settings).enabled
@@ -37,11 +37,11 @@ def test_ai_enabled_flag_false_disables_even_with_key(monkeypatch):
 
 
 def test_settings_reject_bad_bool_and_model(monkeypatch):
-    monkeypatch.setenv("OCCASIO_AI_ENABLED", "maybe")
+    monkeypatch.setenv("UTSAV_AI_ENABLED", "maybe")
     with pytest.raises(ValueError):
         load_settings()
-    monkeypatch.setenv("OCCASIO_AI_ENABLED", "true")
-    monkeypatch.setenv("OCCASIO_MODEL", "bad model; rm -rf")
+    monkeypatch.setenv("UTSAV_AI_ENABLED", "true")
+    monkeypatch.setenv("UTSAV_MODEL", "bad model; rm -rf")
     with pytest.raises(ValueError):
         load_settings()
 
